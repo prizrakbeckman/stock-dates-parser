@@ -25,8 +25,7 @@ public class StockRecordsParser implements CustomFileParser<Stock> {
         try (InputStream inputStream = classLoader.getResourceAsStream(file);
              InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
              BufferedReader br = new BufferedReader(streamReader)) {
-            br.readLine(); // this will read the first line to avoid the header
-            String line;
+            String line = br.readLine(); // this will read the first line to avoid the header
             while ((line = br.readLine()) != null) {
                 stocks.add(processLine(line));
             }
